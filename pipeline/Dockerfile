@@ -25,6 +25,7 @@ COPY pyproject.toml .python-version uv.lock ./
 
 RUN uv sync --locked 
 #Install the dependencies from uv.lock file 
+#Thus ensuring that the same versions of the dependencies are installed every time the docker container is built
 
 WORKDIR /code
 COPY pipeline.py  .
