@@ -26,11 +26,14 @@ COPY pyproject.toml .python-version uv.lock ./
 RUN uv sync --locked 
 #Install the dependencies from uv.lock file 
 #Thus ensuring that the same versions of the dependencies are installed every time the docker container is built
+#--locked also ensures that the dependencies related to dev groups in the pyproject.toml file are not installed
 
 WORKDIR /code
-COPY pipeline.py  .
+#COPY pipeline.py  .
+COPY ingest_data.py .
 
-ENTRYPOINT ["python", "pipeline.py"]
+#ENTRYPOINT ["python", "pipeline.py"]
+ENTRYPOINT ["python", "ingest_data.py"]
 #ENTRYPOINT ["uv","run","python", "pipeline.py"] if ENV PATH="/code/.venv/bin:$PATH" is not set above line
 #Set the entrypoint to execute the pipeline.py file when the container starts
 
