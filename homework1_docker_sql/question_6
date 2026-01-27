@@ -1,0 +1,15 @@
+SELECT
+  df."Zone" AS dropoff_zone,
+  MAX(g.tip_amount) AS max_tip
+FROM green_trip_data g
+JOIN taxi_zone_data pu
+  ON g."PULocationID" = pu."LocationID"
+JOIN taxi_zone_data df
+  ON g."DOLocationID" = df."LocationID"
+WHERE pu."Zone" = 'East Harlem North'
+  AND g.lpep_pickup_datetime >= '2025-11-01'
+  AND g.lpep_pickup_datetime <  '2025-12-01'
+GROUP BY df."Zone"
+ORDER BY max_tip DESC
+LIMIT 1;
+"Yorkville West"	81.89

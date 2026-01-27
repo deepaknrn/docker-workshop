@@ -1,0 +1,4 @@
+SELECT  * FROM green_trip_data where trip_Distance<100
+order by trip_distance desc
+limit 1
+2025-11-14 18:40:48

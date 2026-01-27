@@ -1,0 +1,10 @@
+SELECT * FROM (
+SELECT t."Zone" as Zone,sum(total_amount) as total_amount
+FROM green_trip_data g
+INNER JOIN 
+taxi_zone_data t ON
+g."PULocationID"=t."LocationID"
+WHERE lpep_pickup_datetime::DATE = '2025-11-18'
+group by t."Zone")q
+order by total_amount desc limit 1
+"East Harlem North"	9281.920000000004
