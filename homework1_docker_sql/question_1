@@ -1,0 +1,7 @@
+docker run -it --entrypoint=bash python:3.13.11-slim
+root@1711f37bdb30:/# which python
+/usr/local/bin/python
+root@1711f37bdb30:/# python --version
+Python 3.13.11
+root@1711f37bdb30:/# pip --version
+pip 25.3 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
