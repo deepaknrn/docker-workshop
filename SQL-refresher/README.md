@@ -33,6 +33,18 @@ This service ingests NYC taxi zone lookup data into a PostgreSQL database using 
 ```bash
 docker build -t taxi_zone_lookup:nyc_taxi_zone_lookup .
 ```
+
+docker run -it --rm \
+  --network=pg-network \
+  taxi_zone_lookup:nyc_taxi_zone_lookup \
+  --pg-user root \
+  --pg-password root \
+  --pg-host pg-database \
+  --pg-port 5432 \
+  --pg-db ny_taxi \
+  --target-table zones \
+  --chunksize 100000
+
 ## Check if the postgres container is running :
 docker ps 
 
@@ -54,6 +66,15 @@ docker inspect pipeline-pg-database-1 | grep -A 5 "Networks"
                     "Links": null,
                     "Aliases": [
                         "pipeline-pgadmin-1",
+
+
+docker inspect pg-database | grep -A 5 "Networks"
+            "Networks": {
+                "pg-network": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "d6:e4:ca:40:fb:61",
 
 ## Usage
 
