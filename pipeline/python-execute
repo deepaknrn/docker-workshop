@@ -1,3 +1,32 @@
+The command below will the run data pipeline ingest_data.py in a github codespaces environment
+and insert the data into the postgresql server which is running 
+
+Pre-requisite
+1.Open a terminal window(bash) and run the following command to start a postgres container
+docker run -it --rm \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
+  -v ny_taxi_postgres_data:/var/lib/postgresql \
+  -p 5432:5432 \
+  postgres:18
+  
+2.Open a new teriminal window(bash) and install pgcli using the command below
+uv pip install pgcli
+or uv add --dev pgcli
+
+3.Open a new terminal window(bash) and check if the postgres container is running using the command below
+Verify if the container is running using docker ps -a 
+
+CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS                                         NAMES
+b169ca5794a1   postgres:18   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp   pg-database
+
+URL : http://127.0.0.1:5433/
+
+4.Open a new terminal window(bash) and run the following commands to execute the data pipeline
+uv run pgcli -h localhost -p 5432  -u root -d ny_taxi
+
+5.Finally, run the command below to execute the data pipeline
 uv run python ingest_data.py \
    --pg-user=root \
    --pg-password=root \

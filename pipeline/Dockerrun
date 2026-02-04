@@ -1,1 +1,46 @@
+Using Dockerfile , image is built 
+docker build -t taxi_ingest:v001 .
+
+Execute the containerized application 
 docker run -it --rm taxi_ingest:v001 --year 2021 --month 1 --pg-user root --pg-password root --pg-host localhost --pg-port 5432 --pg-db ny_taxi --target-table yellow_taxi_data --chunksize 100000
+Error :
+connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+        Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+        Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+The localhost:5432 within the taxi_ingest:v001 container is being reached out 
+instead of localhost:5432 that is present in githubcodespaces.
+Only if a request is sent to localhost:5432 in githubcodespaces those requests will be forwared to 5432 to the postgre sql container
+
+To connect from one docker container (taxi_ingest:v001) to another (postgres:18) , we need to create a network 
+docker network create pg-network
+
+In One terminal window run this 
+docker run -it --rm \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
+  -v ny_taxi_postgres_data:/var/lib/postgresql \
+  -p 5432:5432 \
+  --network=pg-network \
+  --name pg-database \
+  postgres:18
+
+In Another terminal window run this [This will execute the ingest_data.py within a docker container and that will connect to the postgres:18 container to insert the data into the table ]
+docker run -it --rm \
+    --network=pg-network \
+    taxi_ingest:v001 \
+    --year 2021 \
+    --month 1 \
+    --pg-user root \
+    --pg-password root \
+    --pg-host pg-database \
+    --pg-port 5432 \
+    --pg-db ny_taxi \
+    --target-table yellow_taxi_data \ 
+    --chunksize 100000
