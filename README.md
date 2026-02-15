@@ -18,4 +18,14 @@ This folder contains practical examples of using Docker and Terraform. The follo
 - **Docker Compose**: Set up multi-container applications.
 - **Terraform Basics**: Manage infrastructure as code using Terraform.
 
+### 2. kestra 
+
+
+This folder contains practical examples and use cases of workflow orchestration using [Kestra](https://kestra.io/).
+
+#### Example Use Cases
+
+Below are some of the flows implemented in `/workflow-orchestration/flows/`:
+
+
 ---
