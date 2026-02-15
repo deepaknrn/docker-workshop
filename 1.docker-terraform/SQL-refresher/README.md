@@ -1,4 +1,3 @@
-
 ## Setup
 
 1. Navigate to the directory:
@@ -52,14 +51,16 @@ docker ps
 docker inspect pipeline-pg-database-1 | grep -A 5 "Networks"
 
 ## Expected output 
-@deepaknrn ➜ /workspaces/docker-workshop/SQL-refresher (main) $ docker inspect pipeline-pg-database-1 | grep -A 5 "Networks"
+@deepaknrn \
+/workspaces/docker-workshop/1.docker_sql_workshop/SQL-refresher (main) $ docker inspect pipeline-pg-database-1 | grep -A 5 "Networks"
             "Networks": {
                 "pipeline_pg-network": {
                     "IPAMConfig": null,
                     "Links": null,
                     "Aliases": [
                         "pipeline-pg-database-1",
-@deepaknrn ➜ /workspaces/docker-workshop/SQL-refresher (main) $ docker inspect pipeline-pgadmin-1 | grep -A 5 "Networks"
+@deepaknrn \
+/workspaces/docker-workshop/1.docker_sql_workshop/SQL-refresher (main) $ docker inspect pipeline-pgadmin-1 | grep -A 5 "Networks"
             "Networks": {
                 "pipeline_pg-network": {
                     "IPAMConfig": null,
@@ -107,7 +108,8 @@ docker run -it --rm \
 
 The data is ingested from `taxi_zone_lookup.csv` in this directory.
 Build the docker image using the following : 
-(pipeline) @deepaknrn ➜ /workspaces/docker-workshop/SQL-refresher (main) $ docker build -t taxi_zone_lookup:nyc_taxi_zone_lookup .
+(pipeline) @deepaknrn \
+/workspaces/docker-workshop/1.docker_sql_workshop/SQL-refresher (main) $ docker build -t taxi_zone_lookup:nyc_taxi_zone_lookup .
 
 ## Expected Output
 

@@ -1,3 +1,5 @@
+"""Script: pipeline.py to be executed locally from the github codespaces terminal"""
+
 import sys
 import pandas as pd
 

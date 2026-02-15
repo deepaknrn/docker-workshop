@@ -9,6 +9,8 @@ This folder demonstrates the use of **Volumes** with Docker containers. The `tes
 ### Step 1: Map the `test` Folder as a Volume
 Map the `test` folder to `/app/test` within the Docker container:
 
+cd /workspaces/docker-workshop/1.docker-terraform
+
 ```bash
 docker run -it --entrypoint=bash -v $(pwd)/test:/app/test python:3.13.11-slim
 ```

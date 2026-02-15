@@ -79,12 +79,33 @@ b169ca5794a1   postgres:18   "docker-entrypoint.s…"   2 minutes ago   Up 2 min
 URL : http://127.0.0.1:5433/
 
 2.To access postgres cli , install pgcli using uv command , If already installed go to Step#3
+
+cd /workspaces/docker-workshop/1.docker-terraform/pipeline
+source .venv/bin/activate
+(pipeline) @deepaknrn ➜ /workspaces/docker-workshop/1.docker-terraform/pipeline (main)
+
+uv add pgcli --active
+or 
 uv add --dev pgcli
 
+
 3.Open a new terminal window(bash)
+
+uv run --active pgcli -h localhost -p 5432 -u root -d ny_taxi
+or 
 uv run pgcli -h localhost -p 5432  -u root -d ny_taxi
+
 It connects to localhost:5432 which inturn forwards to postgresql docker container running in port 5432
 You will now be able to access the postgresql18 ny_taxi database via the CLI
+
+Current set of tables within the postgres:18 container
++--------+------------------+-------+-------+
+| Schema | Name             | Type  | Owner |
+|--------+------------------+-------+-------|
+| public | test             | table | root  |
+| public | yellow_taxi_data | table | root  |
+| public | zones            | table | root  |
++--------+------------------+-------+-------+
 
 To Containerize the Python code [ingest_data.py] and execute it within a docker container
 4.Build the docker image after the Dockerfile has been created

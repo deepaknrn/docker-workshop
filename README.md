@@ -1,25 +1,21 @@
-# Docker Workshop
+# Data Engineering Zoomcamp 2026
 
-This repository is part of the **Data Engineering ZoomCamp - January 2026**. It has been created for self-learning and practicing Docker-related concepts for Data Engineering.
+This repository has been created as part of the **Data Engineering Zoomcamp 2026**.
 
-- **Original Content**: [Data Engineering ZoomCamp Docker Workshop](https://github.com/alexeygrigorev/workshops/tree/main/dezoomcamp-docker)
-- **YouTube Playlist**: [ZoomCamp Docker Playlist](https://www.youtube.com/watch?v=lP8xXebHmuE&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=3)
+## Resources
 
----
+- **YouTube Playlist**: [Data Engineering Zoomcamp](https://www.youtube.com/watch?v=lP8xXebHmuE&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=3)
+- **GitHub Repository (Fork)**: [DataTalksClub/data-engineering-zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp)
+- **Scoreboard and Homework Ratings**: [DE Zoomcamp 2026 Course](https://courses.datatalks.club/de-zoomcamp-2026/)
 
 ## Folder Structure
 
-### `test`
-Demonstrates the usage of **Volumes** with Docker containers, including the execution of a Python program within a Docker container.
+### 1. docker-terraform
 
-### `pipeline_test`
-Demonstrates the usage of a Dockerized data pipeline, including the execution of a data pipeline within a Docker container. Dependencies installed include `pandas` and `pyarrow`.
+This folder contains practical examples of using Docker and Terraform. The following use cases are covered:
 
-### `pipeline`
-Demonstrates inserting data from one Dockerized container (running the Python script `taxi_ingest:v001`) into another Docker container running PostgreSQL (`postgres:18`). The target table is `yellow_taxi_data`. Both containers are within the same network (`pg-network`).
+- **Docker Basics**: Learn how to create and manage Docker containers.
+- **Docker Compose**: Set up multi-container applications.
+- **Terraform Basics**: Manage infrastructure as code using Terraform.
 
-### `SQL-refresher`
-Demonstrates inserting data from one Dockerized container (running the Python script `taxi_zone_lookup:nyc_taxi_zone_lookup`) into another Docker container running PostgreSQL (`postgres:18`). The target table is `zones`. Both containers are within the same network (`pg-network`).
-
-### `homework1_docker_sql`
-Contains the homework assignment listed here: [Homework 1 - Docker and SQL](https://courses.datatalks.club/de-zoomcamp-2026/homework/hw1).
+---

@@ -26,6 +26,13 @@ This guide explains how to use `pipeline.py` to create a Parquet file from a Pan
 
 ---
 
+## Activating Virtual Environment 
+
+source .venv/bin/activate
+
+(base) @deepaknrn ➜ /workspaces/docker-workshop/1.docker-terraform/pipeline_test (main) $ source .venv/bin/activate
+(pipeline-test) (base) @deepaknrn ➜ /workspaces/docker-workshop/1.docker-terraform/pipeline_test (main) $
+
 ## Running the Program
 
 To run the program in GitHub Codespaces:
@@ -49,7 +56,7 @@ uv run python pipeline.py 1
 2. Example build output:
 
    ```bash
-   @deepaknrn ➜ /workspaces/docker-workshop/pipeline_test (main) $ docker build -t test:pandas .
+   @deepaknrn ➜ /workspaces/docker-workshop/1.docker_sql_workshop/pipeline_test (main) $ docker build -t test:pandas .
    [+] Building 17.3s (15/15) FINISHED                                                   docker:default
     => [internal] load build definition from Dockerfile                                            0.1s
     => => transferring dockerfile: 1.85kB                                                          0.0s
@@ -90,6 +97,8 @@ uv run python pipeline.py 1
    ```bash
    docker run -it --entrypoint=bash --rm test:pandas
    ```
+--rm will not save the state of the container after exiting. After exiting when docker ps -a is used , the container will not be displayed
+
 2. Inside the container, you can list the files to verify the contents:
    ```bash
    root@e463826dd274:/code# ls

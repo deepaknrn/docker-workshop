@@ -12,7 +12,7 @@ import pandas as pd
 
 pd.__file__
 """This pandas is coming from the virtual environment in the host machine 
-: /workspaces/docker-workshop/pipeline/.venv/lib/python3.13/site-packages/pandas/__init__.py"""
+: /workspaces/docker-workshop/1.docker_sql_workshop/pipeline/.venv/lib/python3.13/site-packages/pandas/__init__.py"""
 
 
 # In[3]:
