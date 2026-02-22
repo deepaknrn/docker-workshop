@@ -93,7 +93,8 @@ Access **pgAdmin4** in your browser at:
 [http://127.0.0.1:8085/browser/](http://127.0.0.1:8085/browser/)
 
 - **Server Name**: kestra  
-- **Connection Name**: pg-database-kestra  
+- **Connection Name**: pg-database-kestra 
+- **Hostname/addresss** : pg-database-kestra 
 - **Port**: 5432  
 - **Maintenance Database**: postgres  
 - **Username**: root  
@@ -125,6 +126,7 @@ Set up the `ingest_data.py` script to handle data ingestion.
 
 ### 2. Run the Ingestion Script
 Run the script to insert data into the PostgreSQL container:
+cd workflow-orchestration
 ```bash
 uv run python ingest_data.py \
    --pg-user=root \
@@ -203,3 +205,24 @@ Place `.yaml` files under the `/flows` folder in the Kestra server and execute t
 | `2a4579040b82` | `postgres:18`        | PostgreSQL database container                   |
 | `41f05dacb410` | `postgres:18`        | Kestra metadata database container              |
 | `e77595234376` | `kestra/kestra:v1.1` | Kestra server container (Access Kestra UI)      |
+
+
+### Set Up the Database Server
+Access **pgAdmin4** in your browser at:  
+[http://127.0.0.1:8085/browser/](http://127.0.0.1:8085/browser/)
+
+-- This is the postgres database where ETL happens [equivalent of ny taxi db]
+- **Server Name**: pg-database-kestra   
+- **Connection Name**: pg-database-kestra 
+- **Hostname/addresss** : pg-database-kestra 
+- **Port**: 5432  
+- **Maintenance Database**: postgres  
+- **Username**: root  
+
+-- This is the postgres database server where Kestra related metadata is stored.
+- **Server Name**: kestra_postgres  
+- **Connection Name**: kestra_postgres 
+- **Hostname/addresss** : kestra_postgres 
+- **Port**: 5432  
+- **Maintenance Database**: postgres  
+- **Username**: kestra  

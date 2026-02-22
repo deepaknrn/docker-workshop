@@ -1,3 +1,6 @@
+# Exclude sensitive credentials
+service-account.json
+.env_encounded
 #Ignore parquet files
 *.parquet
 

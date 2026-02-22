@@ -1,10 +1,10 @@
-id: 01_hello_world
+id: 01_hello-world
 namespace: zoomcamp
 
 inputs:
   - id: name
     type: STRING
-    defaults: Will
+    defaults: Deepak Narayan
 
 concurrency:
   behavior: FAIL
@@ -12,12 +12,12 @@ concurrency:
 
 variables:
   welcome_message: "Hello, {{ inputs.name }}!"
-  
+
 tasks:
   - id: hello_message
     type: io.kestra.plugin.core.log.Log
     message: "{{ render(vars.welcome_message) }}"
-  
+
   - id: generate_output
     type: io.kestra.plugin.core.debug.Return
     format: I was generated during this workflow.
@@ -44,5 +44,5 @@ triggers:
     type: io.kestra.plugin.core.trigger.Schedule
     cron: "0 10 * * *"
     inputs:
-      name: Sarah
+      name: Deepak Narayan
     disabled: true
