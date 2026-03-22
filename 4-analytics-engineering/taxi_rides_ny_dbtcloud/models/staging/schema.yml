@@ -1,0 +1,11 @@
+version : 2
+
+sources:
+  - name: staging
+    database: bigquerydemo-dezoomcamp
+    schema: nytaxi_dbt
+
+    tables:
+      - name: external_yellow_tripdata_2019_2020
+      - name: external_green_tripdata_2019_2020
+
